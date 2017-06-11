@@ -4,7 +4,9 @@ import setupWebFont from 'ember-cli-webfontloader/initializers/browser/ember-cli
 export default {
     name: 'ember-cli-webfontloader',
     initialize() {
-        const config = Ember.get(ENV, 'webFontConfig') || {};
-        setupWebFont(config);
+        if (typeof FastBoot === 'undefined') {
+            const config = Ember.get(ENV, 'webFontConfig') || {};
+            setupWebFont(config);
+        }
     }
 };
